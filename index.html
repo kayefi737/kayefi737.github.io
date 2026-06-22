@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Olamide Anthony Smith | Cloud · DevOps · Backend Engineer</title>
+<meta name="description" content="Portfolio of Olamide Anthony Smith. Cloud Computing, DevOps and Backend Engineer. AWS, Docker, CI/CD, FastAPI, Python." />
+<style>
+  :root{
+    --bg:#0b1120; --bg2:#0f172a; --card:#111c30; --card2:#16233c;
+    --line:#1e2d47; --text:#e6edf6; --muted:#9fb0c7; --soft:#7e90aa;
+    --accent:#38bdf8; --accent2:#22d3ee; --accent3:#34d399; --warn:#fbbf24;
+    --grad:linear-gradient(135deg,#38bdf8 0%,#22d3ee 45%,#34d399 100%);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Segoe UI',-apple-system,Roboto,Helvetica,Arial,sans-serif;
+    background:radial-gradient(1200px 600px at 80% -10%,#13243f 0%,transparent 60%),
+               radial-gradient(900px 500px at -10% 20%,#0e2233 0%,transparent 55%),
+               var(--bg);
+    color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent);text-decoration:none}
+  a:hover{color:var(--accent2)}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  section{padding:64px 0;border-top:1px solid var(--line)}
+  .eyebrow{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:10px}
+  h2{font-size:30px;font-weight:800;margin-bottom:8px;letter-spacing:-.5px}
+  .lead{color:var(--muted);max-width:620px;margin-bottom:34px}
+
+  /* NAV */
+  header.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(10px);
+    background:rgba(11,17,32,.78);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .brand{font-weight:800;letter-spacing:.5px}
+  .brand span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .nav-links{display:flex;gap:26px}
+  .nav-links a{color:var(--muted);font-size:14.5px;font-weight:600}
+  .nav-links a:hover{color:var(--text)}
+  @media(max-width:680px){.nav-links{display:none}}
+
+  /* HERO */
+  .hero{padding:84px 0 70px;border-top:none}
+  .hero .tag{display:inline-block;font-size:13px;color:var(--accent3);
+    border:1px solid #1f3b34;background:#0e2019;padding:5px 14px;border-radius:999px;margin-bottom:22px}
+  .hero h1{font-size:54px;line-height:1.05;font-weight:850;letter-spacing:-1.5px;margin-bottom:16px}
+  .hero h1 .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p.sub{font-size:19px;color:var(--muted);max-width:640px;margin-bottom:30px}
+  .cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:10px;
+    font-weight:700;font-size:15px;border:1px solid transparent;transition:.2s}
+  .btn.primary{background:var(--grad);color:#04121e}
+  .btn.primary:hover{filter:brightness(1.08);transform:translateY(-1px)}
+  .btn.ghost{border-color:var(--line);color:var(--text)}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+  .meta-row{display:flex;gap:22px;flex-wrap:wrap;color:var(--soft);font-size:14.5px}
+  .meta-row b{color:var(--text)}
+  @media(max-width:680px){.hero h1{font-size:38px}.hero p.sub{font-size:17px}}
+
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:46px}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .stat .n{font-size:26px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .stat .l{font-size:13px;color:var(--muted);margin-top:2px}
+  @media(max-width:680px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:40px}
+  .about-grid p{color:var(--muted);margin-bottom:16px}
+  .about-grid p b{color:var(--text)}
+  .facts{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;height:fit-content}
+  .facts h4{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+  .facts .f{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+  .facts .f:last-child{border-bottom:none}
+  .facts .f span:first-child{color:var(--soft)}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr}}
+
+  /* SKILLS */
+  .skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .skill-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;transition:.2s}
+  .skill-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .skill-card h3{font-size:16px;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+  .skill-card h3 .dot{width:9px;height:9px;border-radius:50%}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:13px;background:var(--card2);border:1px solid var(--line);color:var(--muted);
+    padding:5px 11px;border-radius:8px}
+  .chip.learn{border-style:dashed;color:var(--warn);border-color:#3a3320}
+  @media(max-width:680px){.skill-grid{grid-template-columns:1fr}}
+
+  /* PROJECTS */
+  .proj{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px;margin-bottom:22px;transition:.2s}
+  .proj:hover{border-color:var(--accent2)}
+  .proj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+  .proj h3{font-size:22px;font-weight:800;display:flex;align-items:center;gap:10px}
+  .badge{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+    padding:4px 10px;border-radius:999px}
+  .badge.flag{background:#0e2019;color:var(--accent3);border:1px solid #1f3b34}
+  .proj .tagline{color:var(--accent2);font-weight:600;margin:4px 0 14px}
+  .proj p{color:var(--muted);margin-bottom:16px}
+  .feat{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px 22px;margin-bottom:18px}
+  .feat li{color:var(--muted);font-size:14.5px;position:relative;padding-left:22px}
+  .feat li:before{content:"▸";color:var(--accent);position:absolute;left:0}
+  .stack{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}
+  .stack .chip{background:#0c1626}
+  .proj-links{display:flex;gap:14px;flex-wrap:wrap}
+  .proj-links a{font-size:14px;font-weight:700;display:inline-flex;align-items:center;gap:6px}
+  @media(max-width:680px){.feat{grid-template-columns:1fr}.proj h3{font-size:19px}}
+
+  /* EXPERIENCE */
+  .timeline{position:relative;padding-left:28px}
+  .timeline:before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .tl-item{position:relative;margin-bottom:26px}
+  .tl-item:before{content:"";position:absolute;left:-28px;top:5px;width:14px;height:14px;border-radius:50%;
+    background:var(--bg);border:3px solid var(--accent)}
+  .tl-item .role{font-size:17px;font-weight:700}
+  .tl-item .co{color:var(--accent2);font-weight:600;font-size:14.5px}
+  .tl-item .when{color:var(--soft);font-size:13px;margin-bottom:6px}
+  .tl-item p{color:var(--muted);font-size:14.5px}
+
+  /* CONTACT */
+  .contact{text-align:center;background:linear-gradient(180deg,transparent,#0c1828)}
+  .contact h2{font-size:34px}
+  .contact .lead{margin:0 auto 30px}
+  .contact-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:30px}
+  footer{padding:30px 0;text-align:center;color:var(--soft);font-size:13.5px;border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand"><span>OAS</span> · Olamide Anthony Smith</div>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="tag">● Open to Cloud / DevOps / Backend roles</span>
+    <h1>Building reliable <span class="grad">cloud infrastructure</span><br/>and clean backend systems.</h1>
+    <p class="sub">I'm Olamide, a Cloud Computing &amp; DevOps engineer with a backend bias. I ship containerized Python services, automate delivery with CI/CD, and care about security, observability, and keeping things simple enough to run with one command.</p>
+    <div class="cta">
+      <a class="btn primary" href="#projects">View my work →</a>
+      <a class="btn ghost" href="Olamide_Anthony_Smith_Resume.pdf" target="_blank" rel="noopener">View CV</a>
+      <a class="btn ghost" href="https://github.com/kayefi737" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn ghost" href="mailto:olamidesmith4@gmail.com">Email me</a>
+    </div>
+    <div class="meta-row">
+      <span>📍 <b>Lagos, Nigeria</b></span>
+      <span>☁️ <b>AWS · Cloud Practitioner</b> (in progress)</span>
+      <span>🎓 <b>Techcrush Cloud Computing</b>, Cohort 6</span>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="n">20+</div><div class="l">Security checks shipped in AegisScan</div></div>
+      <div class="stat"><div class="n">9</div><div class="l">Scan categories, OWASP-mapped</div></div>
+      <div class="stat"><div class="n">3.11–3.13</div><div class="l">Python CI matrix</div></div>
+      <div class="stat"><div class="n">3+ yrs</div><div class="l">Operations &amp; compliance background</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">About</div>
+    <h2>From the banking floor to the cloud</h2>
+    <div class="about-grid">
+      <div>
+        <p>I spent three years inside a leading pan-African bank handling operations, compliance, and the human side of digital transformation. That work taught me how real systems fail, how regulation shapes software, and why reliability is non-negotiable.</p>
+        <p>I now build the systems instead of operating around them. After completing the <b>Techcrush Cloud Computing</b> programme (Cohort 6), I focus on <b>cloud infrastructure, DevOps automation, and backend API development</b>. My toolkit centres on <b>AWS, Linux, Docker, CI/CD, Python and FastAPI</b>.</p>
+        <p>My recent project, <b>AegisScan</b>, is a production-shaped web-security scanner: async FastAPI, an SSRF-guarded scan engine, a published scoring rubric, OpenAPI docs, a multi-version GitHub Actions matrix, and Docker/Compose deployment, all built to run with a single command and zero managed services.</p>
+        <p>I'm currently working toward the <b>AWS Cloud Practitioner</b> certification and growing into an AI consulting and automation practice on the side.</p>
+      </div>
+      <div class="facts">
+        <h4>At a glance</h4>
+        <div class="f"><span>Focus</span><span>Cloud · DevOps · Backend</span></div>
+        <div class="f"><span>Cloud</span><span>AWS</span></div>
+        <div class="f"><span>Languages</span><span>Python, SQL, Bash</span></div>
+        <div class="f"><span>Location</span><span>Lagos, Nigeria</span></div>
+        <div class="f"><span>Education</span><span>B.Sc Bus. Admin</span></div>
+        <div class="f"><span>Cert</span><span>AWS CP (in progress)</span></div>
+        <div class="f"><span>Status</span><span>Open to work</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow">Skills</div>
+    <h2>Tools I build and ship with</h2>
+    <p class="lead">A practical stack across cloud, DevOps automation, and backend engineering, plus the operations and compliance foundation underneath it.</p>
+    <div class="skill-grid">
+      <div class="skill-card">
+        <h3><span class="dot" style="background:#38bdf8"></span>Cloud &amp; Infrastructure</h3>
+        <div class="chips">
+          <span class="chip">AWS EC2</span><span class="chip">S3</span><span class="chip">IAM</span>
+          <span class="chip">VPC</span><span class="chip">Route 53</span><span class="chip">CloudWatch</span>
+          <span class="chip">Load Balancers</span><span class="chip">Security Groups</span>
+          <span class="chip">Networking</span><span class="chip">Nginx</span>
+          <span class="chip learn">Terraform</span><span class="chip learn">Serverless</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><span class="dot" style="background:#22d3ee"></span>DevOps &amp; Automation</h3>
+        <div class="chips">
+          <span class="chip">Docker</span><span class="chip">Docker Compose</span>
+          <span class="chip">CI/CD</span><span class="chip">GitHub Actions</span>
+          <span class="chip">Git / GitHub</span><span class="chip">Bash / Shell</span>
+          <span class="chip">Linux Admin</span><span class="chip">IaC</span>
+          <span class="chip">Cloud Monitoring</span>
+          <span class="chip learn">Kubernetes</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><span class="dot" style="background:#34d399"></span>Backend &amp; APIs</h3>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">FastAPI</span>
+          <span class="chip">REST APIs</span><span class="chip">PostgreSQL</span>
+          <span class="chip">SQLAlchemy</span><span class="chip">Pydantic</span>
+          <span class="chip">Alembic</span><span class="chip">JWT / OAuth2</span>
+          <span class="chip">OpenAPI / Swagger</span><span class="chip">pytest</span>
+          <span class="chip">httpx</span><span class="chip">SQLite</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><span class="dot" style="background:#fbbf24"></span>Operations &amp; Foundations</h3>
+        <div class="chips">
+          <span class="chip">KYC / AML</span><span class="chip">Risk &amp; Compliance</span>
+          <span class="chip">Process Improvement</span><span class="chip">Excel</span>
+          <span class="chip">Power BI</span><span class="chip">ETL</span>
+          <span class="chip">Stakeholder Mgmt</span><span class="chip">SLA Management</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow">Projects</div>
+    <h2>Selected work</h2>
+    <p class="lead">Backend and infrastructure projects that show how I design, secure, test, and ship software.</p>
+
+    <div class="proj">
+      <div class="proj-top">
+        <h3>🛡️ AegisScan <span class="badge flag">Featured</span></h3>
+      </div>
+      <div class="tagline">Grade any website's external security posture in ~10 seconds.</div>
+      <p>A FastAPI web-security scanner that runs 20+ passive, read-only checks across nine categories, computes a transparent A+→F grade, and returns a report where every failure carries the exact fix and its OWASP Top-10 mapping. Built to run with one command and zero managed services.</p>
+      <ul class="feat">
+        <li>Async, concurrent scan engine (<code>asyncio.gather</code>) of pure check functions</li>
+        <li>SSRF guard that resolves and rejects private / loopback / reserved IPs</li>
+        <li>Published, reproducible weighted scoring rubric served at <code>/api/meta</code></li>
+        <li>Auto-generated OpenAPI / Swagger docs at <code>/docs</code></li>
+        <li>JWT + bcrypt auth; guest and authenticated scan flows</li>
+        <li>JSON / HTML / PDF reports (reportlab, no system libraries)</li>
+        <li>Offline pytest suite; CI matrix on Python 3.11 / 3.12 / 3.13</li>
+        <li>SQLite by default, swap to Postgres with one env var</li>
+      </ul>
+      <div class="stack">
+        <span class="chip">FastAPI</span><span class="chip">Python</span><span class="chip">SQLAlchemy 2</span>
+        <span class="chip">httpx</span><span class="chip">JWT</span><span class="chip">Docker</span>
+        <span class="chip">GitHub Actions</span><span class="chip">Postgres / SQLite</span><span class="chip">pytest</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/kayefi737/AegisScan" target="_blank" rel="noopener">↗ View on GitHub</a>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-top">
+        <h3>🔗 Link Saver</h3>
+      </div>
+      <div class="tagline">A backend REST API to store and organize user links.</div>
+      <p>A relational-database-backed service for saving and managing links, with secure auth and a clean, versioned schema. A focused demonstration of REST API fundamentals done properly.</p>
+      <ul class="feat">
+        <li>Full CRUD endpoints (GET / POST / PUT / DELETE)</li>
+        <li>JWT + OAuth2 auth, role-based access control (user / admin), and per-user resource ownership</li>
+        <li>SQLAlchemy ORM schema with Alembic migrations</li>
+        <li>Pydantic validation + auto OpenAPI documentation</li>
+      </ul>
+      <div class="stack">
+        <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span>
+        <span class="chip">SQLAlchemy</span><span class="chip">Pydantic</span><span class="chip">Alembic</span>
+      </div>
+      <div class="proj-links">
+        <a href="https://github.com/kayefi737/Link-Saver" target="_blank" rel="noopener">↗ View on GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="eyebrow">Experience &amp; Education</div>
+    <h2>Path so far</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="role">Cloud Computing, Cohort 6</div>
+        <div class="co">Techcrush</div>
+        <div class="when">2026 · Certificate of Completion</div>
+        <p>Hands-on cloud infrastructure, CI/CD pipelines, containerization and automation. Currently preparing for the AWS Cloud Practitioner exam.</p>
+      </div>
+      <div class="tl-item">
+        <div class="role">Customer Service Officer</div>
+        <div class="co">Access Bank Nig Plc, Lagos</div>
+        <div class="when">Nov 2022 – Dec 2025</div>
+        <p>Operations, KYC/AML compliance, transaction monitoring and digital-banking adoption. Drove a 40% increase in digital platform adoption during the bank's transformation push.</p>
+      </div>
+      <div class="tl-item">
+        <div class="role">Administrative Assistant</div>
+        <div class="co">Hybee Xchange, Lagos</div>
+        <div class="when">Nov 2020 – Aug 2021</div>
+        <p>Ran day-to-day operations and a clean property/lead database with structured SOPs and rigorous data validation.</p>
+      </div>
+      <div class="tl-item">
+        <div class="role">Data Analyst Intern (NYSC)</div>
+        <div class="co">Lagos State Internal Revenue Service</div>
+        <div class="when">Nov 2019 – Nov 2020</div>
+        <p>Supported the agency's ETL transition to an e-Tax platform: data cleaning, validation, and BI reporting for audit readiness.</p>
+      </div>
+      <div class="tl-item">
+        <div class="role">B.Sc Business Administration · HND · ND</div>
+        <div class="co">Ahmadu Bello University · Gateway Polytechnic</div>
+        <div class="when">2015 – 2026</div>
+        <p>Business administration foundation alongside continuous self-directed learning in cloud and software engineering.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="eyebrow" style="text-align:center">Contact</div>
+    <h2>Let's build something reliable</h2>
+    <p class="lead">Open to cloud, DevOps and backend roles, as well as AI automation and consulting work. The fastest way to reach me is email.</p>
+    <div class="contact-row">
+      <a class="btn primary" href="mailto:olamidesmith4@gmail.com">✉ olamidesmith4@gmail.com</a>
+      <a class="btn ghost" href="Olamide_Anthony_Smith_Resume.pdf" target="_blank" rel="noopener">View CV</a>
+      <a class="btn ghost" href="https://github.com/kayefi737" target="_blank" rel="noopener">GitHub · kayefi737</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/olamide-smith-b67488251" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="meta-row" style="justify-content:center">
+      <span>📍 Lagos, Nigeria</span>
+      <span>📞 +234 903 513 2425</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Olamide Anthony Smith · Cloud · DevOps · Backend Engineer.
+</footer>
+
+</body>
+</html>
